@@ -1,22 +1,21 @@
 <?php
-require_once __DIR__ . '/../app/config/Database.php';
-require_once __DIR__ . '/../app/models/Categoria.php';
 
-echo "<p>Hola desde index.php</p>";
+$controller=isset($_GET['controller']) ? $_GET['controller'] : 'Home';
+$action=isset($_GET['action']) ? $_GET['action'] : 'index';
 
-$database = new Database();
-$conn = $database->getConnection();
+$controllerName = $controller . 'Controller';
+$controllerFile = __DIR__ . '/../app/controllers/' . $controllerName . '.php';
 
-if ($conn) {
-    echo "<p>La conexion ha sido exitosa :D</p>";
+if(file_exists($controllerFile)) {
+    require_once $controllerFile;
+
+    $controllerObject = new $controllerName();
+
+    if(method_exists($controllerObject,$action)){
+        $controllerObject->{$action}();
+    } else {
+        echo "El controller $controllerName no tiene el metodo $action.";
+    }
 } else {
-    echo "<p>La conexion ha fallado :(</p>";
+    echo "El controller $controllerName no existe.";
 }
-
-$categoriaModel = new Categoria($conn);
-
-$categorias = $categoriaModel->listarCategorias();
-
-echo "<div>";
-print_r($categorias);
-echo "</div>";
