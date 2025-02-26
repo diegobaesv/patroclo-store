@@ -43,7 +43,39 @@
         </nav>
     </header>
 
-    <h1>Listado de categorias</h1>
+    <main>
+        <h1>Listado de categorias</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Fecha Creación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if(!empty($categorias)): ?>
+                    <?php foreach($categorias as $cat): ?>
+                        <tr>
+                            <th scope="row"><?php echo $cat['id_categoria']; ?></th>
+                            <td><?php echo $cat['nombre']; ?></td>
+                            <td>
+                                <img src="<?php echo $cat['imagen_url']; ?>" width="200px" height="150px" alt="<?php echo $cat['nombre']; ?>">
+                            </td>
+                            <td><?php echo $cat['fecha_creacion_auditoria']; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="4">No existen registros</td>
+                    </tr>
+                <?php endif; ?>
+
+            </tbody>
+        </table>
+    </main>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
