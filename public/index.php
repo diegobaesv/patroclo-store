@@ -12,7 +12,11 @@ if(file_exists($controllerFile)) {
     $controllerObject = new $controllerName();
 
     if(method_exists($controllerObject,$action)){
-        $controllerObject->{$action}();
+        if(!empty($_POST)){
+            $controllerObject->{$action}($_POST);
+        } else {
+            $controllerObject->{$action}();
+        }
     } else {
         echo "El controller $controllerName no tiene el metodo $action.";
     }

@@ -19,8 +19,12 @@ class Categoria {
     
     }
 
-    public function insertarCategoria(){
-
+    public function insertarCategoria($categoria){
+        $query = "INSERT INTO " . $this->tableName . " (nombre, imagen_url) VALUES ( :nombre, :imagenUrl  )";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':nombre',$categoria['nombre']);
+        $stmt->bindParam(':imagenUrl',$categoria['imagenUrl']);
+        return $stmt->execute();
     }
 
     public function actualizarCategoria(){

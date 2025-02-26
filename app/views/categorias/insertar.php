@@ -47,14 +47,14 @@
     <main style="padding: 20px;">
         <h1>Agregar una categoria</h1>
 
-        <form>
+        <form action="index.php?controller=Categoria&action=insertar" method="post">
             <div class="mb-3">
                 <label for="nombreCategoria" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombreCategoria">
+                <input type="text" class="form-control" id="nombreCategoria" minlength="3" required name="nombre">
             </div>
             <div class="mb-3">
                 <label for="imagenUrlCategoria" class="form-label">URL Imagen</label>
-                <input type="text" class="form-control" id="imagenUrlCategoria">
+                <input type="text" class="form-control" id="imagenUrlCategoria" minlength="5" required name="imagenUrl">
             </div>
 
             <button type="submit" class="btn btn-primary">Insertar</button>

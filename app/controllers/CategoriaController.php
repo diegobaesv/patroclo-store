@@ -21,5 +21,10 @@ class CategoriaController {
         require __DIR__ . '/../views/categorias/insertar.php';
     }
 
+    public function insertar($request){
+        $this->categoriaModel->insertarCategoria($request);
+        header('Location: index.php?controller=Categoria');
+    }
+
     
 }
