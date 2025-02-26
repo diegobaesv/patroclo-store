@@ -16,4 +16,6 @@ class CategoriaController {
         $categorias = $this->categoriaModel->listarCategorias();
         require __DIR__ . '/../views/categorias/index.php';
     }
+
+    
 }
