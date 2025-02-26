@@ -17,5 +17,9 @@ class CategoriaController {
         require __DIR__ . '/../views/categorias/index.php';
     }
 
+    public function viewInsertar(){
+        require __DIR__ . '/../views/categorias/insertar.php';
+    }
+
     
 }
