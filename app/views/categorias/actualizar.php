@@ -7,6 +7,7 @@
     <title>Patrolo Store | SISE</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
+
 <body>
 
     <header>
@@ -44,45 +45,20 @@
     </header>
 
     <main style="padding: 20px;">
-        <div style="display: flex; gap: 20px;">
-            <h1>Listado de categorias</h1>
-            <p><a class="btn btn-primary" href="/?controller=Categoria&action=viewInsertar">Agregar categoria +</a></p>
-        </div>
-        
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Imagen</th>
-                    <th scope="col">Fecha Creación</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if(!empty($categorias)): ?>
-                    <?php foreach($categorias as $cat): ?>
-                        <tr>
-                            <th scope="row"><?php echo $cat['id_categoria']; ?></th>
-                            <td><?php echo $cat['nombre']; ?></td>
-                            <td>
-                                <img src="<?php echo $cat['imagen_url']; ?>" width="200px" height="150px" alt="<?php echo $cat['nombre']; ?>">
-                            </td>
-                            <td><?php echo $cat['fecha_creacion_auditoria']; ?></td>
-                            <td>
-                                <a href="/?controller=Categoria&action=viewActualizar" type="button" class="btn btn-warning">Editar</a>
-                                <a type="button" class="btn btn-danger">Dar de Baja</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <tr>
-                        <td colspan="4">No existen registros</td>
-                    </tr>
-                <?php endif; ?>
+        <h1>Actualizar una categoria</h1>
 
-            </tbody>
-        </table>
+        <form action="index.php?controller=Categoria&action=actualizar" method="post">
+            <div class="mb-3">
+                <label for="nombreCategoria" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombreCategoria" minlength="3" required name="nombre">
+            </div>
+            <div class="mb-3">
+                <label for="imagenUrlCategoria" class="form-label">URL Imagen</label>
+                <input type="text" class="form-control" id="imagenUrlCategoria" minlength="5" required name="imagenUrl">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+        </form>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

@@ -26,5 +26,8 @@ class CategoriaController {
         header('Location: index.php?controller=Categoria');
     }
 
+    public function viewActualizar(){
+        require __DIR__ . '/../views/categorias/actualizar.php';
+    }
     
 }
