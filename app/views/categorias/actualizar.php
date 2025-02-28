@@ -50,11 +50,11 @@
         <form action="index.php?controller=Categoria&action=actualizar" method="post">
             <div class="mb-3">
                 <label for="nombreCategoria" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombreCategoria" minlength="3" required name="nombre">
+                <input type="text" class="form-control" id="nombreCategoria" minlength="3" required name="nombre" value="<?php echo $categoria['nombre'];?>">
             </div>
             <div class="mb-3">
                 <label for="imagenUrlCategoria" class="form-label">URL Imagen</label>
-                <input type="text" class="form-control" id="imagenUrlCategoria" minlength="5" required name="imagenUrl">
+                <input type="text" class="form-control" id="imagenUrlCategoria" minlength="5" required name="imagenUrl" value="<?php echo $categoria['imagen_url']; ?>">
             </div>
 
             <button type="submit" class="btn btn-primary">Actualizar</button>

@@ -28,9 +28,8 @@ class CategoriaController {
 
     public function viewActualizar(){
         $idCategoria=isset($_GET['idCategoria']) ? $_GET['idCategoria'] : '0';
-
-        echo $idCategoria;
-        //require __DIR__ . '/../views/categorias/actualizar.php';
+        $categoria = $this->categoriaModel->obtenerCategoria($idCategoria);
+        require __DIR__ . '/../views/categorias/actualizar.php';
     }
     
 }

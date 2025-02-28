@@ -15,8 +15,13 @@ class Categoria {
         return $result;
     }
 
-    public function obtenerCategoria(){
-    
+    public function obtenerCategoria($idCategoria){
+        $query = "SELECT * FROM " . $this->tableName . " WHERE estado_auditoria = '1' AND id_categoria = :id_categoria";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_categoria',$idCategoria);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result[0];
     }
 
     public function insertarCategoria($categoria){
