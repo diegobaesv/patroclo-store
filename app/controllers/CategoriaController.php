@@ -36,5 +36,11 @@ class CategoriaController {
         $this->categoriaModel->actualizarCategoria($request);
         header('Location: index.php?controller=Categoria');
     }
+
+    public function darBaja(){
+        $idCategoria=isset($_GET['idCategoria']) ? $_GET['idCategoria'] : '0';
+        $this->categoriaModel->darBajaCategoria($idCategoria);
+        header('Location: index.php?controller=Categoria');
+    }
     
 }

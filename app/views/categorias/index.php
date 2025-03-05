@@ -71,7 +71,7 @@
                             <td><?php echo $cat['fecha_creacion_auditoria']; ?></td>
                             <td>
                                 <a href="/?controller=Categoria&action=viewActualizar&idCategoria=<?php echo $cat['id_categoria']; ?>" type="button" class="btn btn-warning">Editar</a>
-                                <a type="button" class="btn btn-danger">Dar de Baja</a>
+                                <a href="/?controller=Categoria&action=darBaja&idCategoria=<?php echo $cat['id_categoria']; ?>" type="button" class="btn btn-danger">Dar de Baja</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

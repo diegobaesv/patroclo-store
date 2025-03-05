@@ -41,8 +41,11 @@ class Categoria {
         return $stmt->execute();
     }
 
-    public function darBajaCategoria(){
-
+    public function darBajaCategoria($idCategoria){
+        $query = "UPDATE " . $this->tableName . " SET estado_auditoria = '0' WHERE id_categoria = :idCategoria";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':idCategoria',$idCategoria);
+        return $stmt->execute();
     }
 
 }
