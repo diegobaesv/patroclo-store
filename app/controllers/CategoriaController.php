@@ -31,5 +31,10 @@ class CategoriaController {
         $categoria = $this->categoriaModel->obtenerCategoria($idCategoria);
         require __DIR__ . '/../views/categorias/actualizar.php';
     }
+
+    public function actualizar($request){
+        $this->categoriaModel->actualizarCategoria($request);
+        header('Location: index.php?controller=Categoria');
+    }
     
 }

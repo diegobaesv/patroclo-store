@@ -48,6 +48,7 @@
         <h1>Actualizar una categoria</h1>
 
         <form action="index.php?controller=Categoria&action=actualizar" method="post">
+            <input type="text" class="d-none form-control" id="idCategoria" name="idCategoria" value="<?php echo $categoria['id_categoria'];?>">
             <div class="mb-3">
                 <label for="nombreCategoria" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombreCategoria" minlength="3" required name="nombre" value="<?php echo $categoria['nombre'];?>">

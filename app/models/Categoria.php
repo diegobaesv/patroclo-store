@@ -8,7 +8,7 @@ class Categoria {
     }
 
     public function listarCategorias(){
-        $query = "SELECT * FROM " . $this->tableName . " WHERE estado_auditoria = '1'";
+        $query = "SELECT * FROM " . $this->tableName . " WHERE estado_auditoria = '1' ORDER BY fecha_creacion_auditoria DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -32,8 +32,13 @@ class Categoria {
         return $stmt->execute();
     }
 
-    public function actualizarCategoria(){
-
+    public function actualizarCategoria($categoria){
+        $query = "UPDATE " . $this->tableName . " SET nombre = :nombre , imagen_url = :imagenUrl WHERE id_categoria = :idCategoria";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':nombre',$categoria['nombre']);
+        $stmt->bindParam(':imagenUrl',$categoria['imagenUrl']);
+        $stmt->bindParam(':idCategoria',$categoria['idCategoria']);
+        return $stmt->execute();
     }
 
     public function darBajaCategoria(){
